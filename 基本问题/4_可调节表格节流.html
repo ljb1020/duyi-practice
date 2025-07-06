@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Resizable Table Columns</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      position: relative;
+    }
+    th {
+    transition: width 0.1s; /* 快速过渡效果 */
+    }
+    .resizer {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 5px;
+      height: 100%;
+      cursor: col-resize;
+      user-select: none;
+    }
+  </style>
+</head>
+<body>
+  <table id="table">
+    <thead>
+      <tr>
+        <th style="width: 200px">Column 1<div class="resizer"></div></th>
+        <th style="width: 200px">Column 2<div class="resizer"></div></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Data 1</td><td>Data 2</td></tr>
+      <tr><td>Data 3</td><td>Data 4</td></tr>
+    </tbody>
+  </table>
+
+  <script>
+    const table = document.getElementById('table');
+    const resizers = table.querySelectorAll('.resizer');
+
+    function throttle(func, limit) {
+      let inThrottle;
+      return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+          func.apply(context, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
+      };
+    }
+
+    resizers.forEach(resizer => {
+      let startX;
+      let startWidth;
+      const th = resizer.parentElement;
+
+      const onMouseMove = throttle((e) => {
+        const delta = e.clientX - startX;
+        th.style.width = startWidth + delta + 'px';
+      }, 16); // 大约每16毫秒更新一次，大约是60帧的频率
+
+      const onMouseUp = () => {
+        window.removeEventListener('mousemove', onMouseMove);
+        window.removeEventListener('mouseup', onMouseUp);
+      };
+
+      resizer.addEventListener('mousedown', (e) => {
+        startX = e.clientX;
+        startWidth = th.offsetWidth;
+
+        window.addEventListener('mousemove', onMouseMove);
+        window.addEventListener('mouseup', onMouseUp);
+      });
+    });
+  </script>
+  
+</body>
+</html>

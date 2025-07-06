@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function ajaxA(resolve, reject) {
+      // console.log(arguments);
+      console.log("ajaxA开始");
+      setTimeout(function () {
+        console.log("ajaxA完成");
+        resolve();
+      }, Math.round(Math.random() * 3000 + 2000));
+    }
+
+    function ajaxB(resolve, reject) {
+      console.log("ajaxB开始");
+      setTimeout(function () {
+        console.log("ajaxB完成");
+        resolve();
+      }, Math.round(Math.random() * 3000 + 2000));
+    }
+
+    function ajaxC(resolve, reject) {
+      console.log("ajaxC开始");
+      setTimeout(function () {
+        console.log("ajaxC完成");
+        resolve();
+      }, Math.round(Math.random() * 3000 + 2000));
+    }
+
+    function D() {
+      console.log("D开始");
+      console.log("D完成");
+    }
+
+    let p1 = new Promise(ajaxA);
+    let p2 = new Promise(ajaxB);
+    let p3 = new Promise(ajaxC);
+
+    // Promise.all([p1,p2,p3]).then(D);
+    Promise.race([p1,p2,p3]).then(D);
+
+  </script>
+</html>

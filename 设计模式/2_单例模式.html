@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 单例模式
+        // function Singleton(name) {
+        //     this.name = name;
+        // }
+
+        var Singleton = (function () {
+            var flag;
+            return function (name) {
+                if (!flag) {
+                    if (new.target !== undefined) {
+                        this.name = name;
+                        flag = this;
+                    } else {
+                        throw new Error("必须要实例执行")
+                    }
+                }
+                return flag;
+            }
+        })();
+
+        Singleton.prototype.getName = function () {
+            console.log(this.name);
+        }
+
+        // var getInstance = (
+        //     function () {
+        //         var instance;
+        //         return function (name) {
+        //             if (!instance) {
+        //                 instance = new Singleton(name);
+        //             }
+        //             return instance;
+        //         }
+        //     }
+        // )();
+
+        // Singleton.getInstance = function (name) {
+        //     if (!this.instance) {
+        //         this.instance = new Singleton(name);
+        //     }
+        //     return this.instance;
+        // }
+
+        let a = new Singleton("zhangsan");
+        let b = new Singleton("lisi");
+        console.log(a === b);
+        a.getName()
+
+        // console.dir(Singleton);
+        // console.dir(Singleton.prototype);
+        // console.log(Singleton.getInstance);
+        // console.log(Singleton.instance);
+
+
+
+
+
+    </script>
+</body>
+
+</html>

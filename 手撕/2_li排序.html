@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+</head>
+
+<body>
+  <ul id="myList">
+    <li id="item1">项目 1</li>
+    <li id="item3">项目 3</li>
+    <li id="item2">项目 2</li>
+    <li id="item4">项目 4</li>
+  </ul>
+
+  <script>
+    function sortAndReturnTextContent() {
+      const items = document.getElementById('myList').children;
+      const array = Array.from(items);
+      console.log(array);
+
+      const sortedText = array
+      .map((li)=>({
+        id:parseInt(li.id.match(/\d+$/)[0],10),
+        text:li.textContent.trim()
+      }))
+      .sort((a,b)=> a.id - b.id);
+
+      console.log(sortedText);
+      
+
+      array.forEach((li,index)=>{
+        let textContent = sortedText[index]["text"];
+        let id = "item" + sortedText[index]["id"].toString();
+        li.textContent = textContent;
+        li.id = id;
+        // console.log(id,textContent);
+        
+      })
+      
+      
+      // 在此补全代码
+    }
+    sortAndReturnTextContent()
+  </script>
+
+
+
+</body>
+
+</html>

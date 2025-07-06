@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        function myPromiseAll(promises) {
+
+            return new Promise((resolve, reject) => {
+
+                const results = [];
+                let count = 0;
+
+                if (promises.length === 0) {
+                    resolve(results);
+                } else {
+                    // 遍历promises
+                    for (let i = 0; i < promises.length; i++) {
+                        promises[i].then(value => {
+                            results[i] = value;
+                            count++;
+                            if (count === promises.length) {
+                                resolve(results);
+                            }
+                        }).catch(err => {
+                            reject(err);
+                        })
+                    }
+                }
+            })
+        }
+
+        function myPromiseRace(promise) {
+
+        }
+
+    </script>
+</body>
+
+</html>

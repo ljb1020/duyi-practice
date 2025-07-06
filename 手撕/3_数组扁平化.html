@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    const arr = [1, [2, [3, [4]]]];
+
+
+    const func1 = arr => arr.toString().split(',').map(Number);
+    const func2 = arr => arr.join(',').split(',').map(Number);
+    const func3 = arr => {
+        while (arr.some(item => Array.isArray(item))) {
+            arr = [].concat(...arr);
+        }
+        return arr;
+    }
+
+
+    // Way1 toString()
+    // const _flatten = arr => {
+    //     // 补全代码
+    //     return arr.toString().split(',').map(Number);
+    // }
+
+    //Way2 reduce() + 递归
+    // const _flatten = arr => {
+    //     return arr.reduce((res, item) => {
+    //         return res.concat(Array.isArray(item) ? _flatten(item) : item)
+    //     }, [])
+    // }
+
+    // Way3 join() + split()
+    // const _flatten = arr => {
+    //     // 补全代码
+    //     return arr.join(',').split(',').map(Number);
+    // }
+
+    // Way4 concat() 扩展运算符 + 循环展开
+    const _flatten = arr => {
+        // 补全代码
+        while (arr.some((item) => { return Array.isArray(item) })) {
+            arr = [].concat(...arr);
+        }
+        return arr;
+    }
+
+
+
+    console.log(_flatten(arr));
+
+</script>
+
+</html>

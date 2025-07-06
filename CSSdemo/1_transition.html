@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* .transition-box {
+            width: 100px;
+            height: 100px;
+            background-color: orange;
+            transition: width 2s, height 2s, background-color 2s;
+            
+            transition: all 1s linear;
+            position: absolute;
+            left: 0;
+        } */
+
+        .transition-box:hover {
+            /* width: 200px;
+            height: 200px;
+            background-color: tomato; */
+            left: 200px;
+        }
+
+        .container {
+            width: 200px;
+            margin: 0 auto;
+            transform-style: preserve-3d;
+            perspective: 500px;
+            position: relative;
+            transition: all 1s;
+        }
+
+        .container:hover {
+            transform: rotate3d(0, 1, 0, 180deg);
+        }
+
+        .transform-box {
+            width: 200px;
+            height: 200px;
+            background-color: tomato;
+            transition: all 1s;
+            position: absolute;
+            /* position: absolute;
+            left: 100px;
+            top: 100px; */
+            /* transform-origin: right bottom; */
+        }
+
+        .transform-box:hover {
+            transform: translate(100px, 20px);
+            /* transform: translateX(100px) translateY(20px); */
+            /* transform: rotate(50deg); */
+            /* transform: scale(.5, 1.5); */
+            /* transform: translate3d(0, 0, 100px);
+            transform: rotate3d(0, 0, 1, 100deg); */
+
+        }
+
+        .test-box {
+            width: 200px;
+            height: 200px;
+            background-color: yellowgreen;
+            position: absolute;
+            transform: translateZ(-100px);
+            animation: changeColor 0.3s infinite;
+        }
+
+        @keyframes changeColor {
+            0% {
+                background-color: red;
+            }
+
+            50% {
+                background-color: blue;
+            }
+
+            100% {
+                background-color: red;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <div class="transition-box"></div> -->
+    <div class="container">
+        <div class="transform-box"></div>
+    </div>
+    <div class="test-box"></div>
+</body>
+
+</html>

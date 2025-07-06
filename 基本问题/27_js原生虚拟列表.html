@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container {
+            width: 600px;
+            height: 500px;
+            border: 1px solid orange;
+            margin: 150px auto;
+        }
+
+        .fs-virtuallist-container {
+            width: 100px;
+            height: 100px;
+            overflow: auto;
+        }
+
+        .fs-virtuallist-list-item {
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            box-sizing: border-box;
+            text-align: center;
+            line-height: 100px;
+            font-size: 18px;
+            font-weight: 700
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="fs-virtuallist-container">
+            <div class="fs-virtuallist-list"></div>
+        </div>
+    </div>
+
+    <script>
+
+        class FsVituallist {
+            constructor(conttainerSelector, listSelector) {
+                this.state = {
+                    dataSource: [],
+                    itemHeight: 100,
+                    viewHeight: 0,
+                    maxCount: 0,
+                };
+                this.startIndex = 0;
+                this.endIndex = 0;
+                this.renderList = [];
+                this.scrollStyle = {};
+
+                this.onContainer = document.querySe
+            }
+        }
+    </script>
+</body>
+
+</html>

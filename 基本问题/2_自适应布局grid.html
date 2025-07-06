@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .grid-container {
+            display: grid;
+            /* 启用 Grid 布局 */
+            /* grid-template-columns: minmax(200px, 2fr) 1fr 1fr; */
+            grid-template-columns: 100px 1fr 1fr
+                /* 定义两列，左侧 100px，右侧自适应 */
+        }
+
+        .left {
+            background-color: skyblue;
+        }
+
+        .right {
+            background-color: lightcoral;
+        }
+
+        .sss {
+            background-color: tomato;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="left">左侧内容</div>
+        <div class="right">右侧内容</div>
+        <div class="sss">3</div>
+    </div>
+
+</body>
+
+</html>

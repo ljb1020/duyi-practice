@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    function Person(name,age){
+        this.name = name;
+        this.age = age;
+        // return {
+        //     a:12,
+        //     b:33
+        // }
+    }
+
+    function _new () {
+        //参数转换数组
+        const args = Array.prototype.slice.call(arguments);
+        const args2 = [...arguments];
+        const args3 = Array.from(arguments);
+        // console.log(args1,args2,args3,arguments);
+        const constructor = args.shift();
+        //申明空对象 并把obj的隐式原型指向constructor的显式原型
+        const obj = Object.create(constructor.prototype);
+        
+        const result = constructor.apply(obj,args);
+        return (typeof(result) === 'object' && result !== null) ? result : obj;
+    }
+
+    console.log(_new(Person,'zhangsan',18));
+
+</script>
+</html>

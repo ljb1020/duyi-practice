@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 0;
+            height: 0;
+            border-left: 50px solid white;
+            border-right: 50px solid white;
+            /* border-top: 100px solid skyblue; */
+            border-bottom: 100px solid blue;
+            position: absolute;
+            left: 20px;
+            transition: 1s linear;
+        }
+
+        div:hover {
+            left: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        let d = document.getElementsByTagName('div');
+        console.log(d);
+
+        d[0].addEventListener('click', () => {
+            alert("hello world")
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        // 设计模式:工厂模式
+
+        // function CreatePerson(name, age, sex) {
+        //     this.name = name;
+        //     this.age = age;
+        //     this.sex = sex;
+        // }
+        // new CreatePerson();
+
+        // 1、父类： 是一个抽象类,不可以直接实例;
+        // 2、子类实现自身的实例方法;
+
+        function BicycleShop(name) {
+            this.name = name;
+            this.method = function () {
+                return this.name;
+            }
+        }
+
+        BicycleShop.prototype = {
+            constuctor: BicycleShop,
+            sellBicycle: function () {
+                var bicycle = this.createBicycle();
+                bicycle.a();
+                bicycle.b();
+                return bicycle;
+            },
+            createBicycle: function () {
+                throw new Error("父类不能直接实例，需要子类来实例");
+            }
+        }
+
+        function _extends(Sub, Sup) {
+            var F = function () {
+
+            }
+            F.prototype = Sup.prototype;
+            Sub.prototype = new F();
+            Sub.prototype.constuctor = Sub;
+            Sub.sup = Sup.prototype;
+        }
+
+        function BicycleChild(name) {
+            BicycleShop.call(this, name);
+        }
+
+        _extends(BicycleChild, BicycleShop);
+
+        BicycleChild.prototype.createBicycle = function () {
+            var a = function () {
+                console.log("执行a任务");
+            }
+
+            var b = function () {
+                console.log("执行b任务");
+            }
+
+            return { a, b }
+        }
+        console.log(BicycleChild.prototype);
+
+        var bicycleChild = new BicycleChild('凤凰');
+        console.log(bicycleChild);
+        console.log(bicycleChild.createBicycle());
+        console.log(bicycleChild.sellBicycle());
+
+    </script>
+
+</body>
+
+</html>

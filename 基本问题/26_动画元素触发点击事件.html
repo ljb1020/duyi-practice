@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .moving-box {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            animation: move 3s infinite alternate;
+            cursor: pointer;
+            /* 明确显示可点击状态 */
+        }
+
+        @keyframes move {
+            from {
+                transform: translateX(0);
+            }
+
+            to {
+                transform: translateX(200px);
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="moving-box" id="box"></div>
+    <script>
+        const box = document.getElementById('box');
+
+        // 直接绑定点击事件
+        box.addEventListener('click', () => {
+            console.log('Box clicked!');
+            box.style.background = 'blue';
+        });
+
+        // 或通过事件委托（适合动态元素）
+        // document.body.addEventListener('click', (e) => {
+        //     // if (e.target.id === 'box') {
+        //     //     alert('Dynamic click detected!');
+        //     // }
+        //     alert('Dynamic click detected!');
+        // });
+    </script>
+</body>
+
+</html>

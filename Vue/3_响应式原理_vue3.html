@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obj = {
+            a: 1,
+            b: 2,
+            c: {
+                a: 1,
+                b: 2,
+            },
+        }
+
+        function _isObject(v) {
+            return typeof v === 'object' && v != null;
+        }
+
+        function observe(obj) {
+            //生成代理对象
+            const proxy = new Proxy(obj, {
+                get(target, k) {
+                    let v = target[k];
+                    if (_isObject(v)) {
+                        v = observe(v);
+                    }
+                    console.log(k, '读取');
+                    return v;
+                },
+                set(target, k, val) {
+                    if (target[k] !== val) {
+                        target[k] = val;
+                        console.log(k, '更改');
+                    }
+                },
+                deleteProperty() { }
+            })
+            return proxy;
+        }
+
+        let proxy = observe(obj);
+
+        proxy.c.a = 3;
+        // console.log(proxy.c.a);
+
+
+    </script>
+</body>
+
+</html>

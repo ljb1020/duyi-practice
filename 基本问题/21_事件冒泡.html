@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div class="grandfather" style="background-color: skyblue;width: 300px;height: 300px;">
+        祖元素
+        <div class="father" style="background-color: orange;width: 200px;height: 200px;">
+            父元素
+            <div class="son" style="background-color: brown;width: 100px;height: 100px;">
+                孙元素
+            </div>
+        </div>
+    </div>
+    <script>
+        let grandfather = document.querySelector('.grandfather');
+        let father = document.querySelector('.father');
+        let son = document.querySelector('.son');
+
+        grandfather.addEventListener('click', e => {
+            console.log("grandfather被点击");
+            // e.stopPropagation();
+        }, {})
+        father.addEventListener('click', e => {
+            console.log("father被点击");
+            // e.stopPropagation();
+        }, { capture: true, })
+        son.addEventListener('click', e => {
+            console.log("son被点击");
+            // e.stopPropagation();
+        }, { once: true, })
+        // son.addEventListener('click', e => {
+        //     console.log("son被点击1111");
+        // }, {})
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./7_手撕myPromise.js"></script>
+</head>
+
+<body>
+
+
+    <script>
+
+        let p = new MyPromise((resolve, reject) => {
+            // reject('error');
+            // throw ('err');
+            resolve('ok');
+            // setTimeout(() => {
+            //     resolve('ok')
+            // }, 3000)
+        })
+        // console.log(p);
+
+        p.then(value => {
+            console.log(value);
+        }, reason => {
+            console.warn(reason);
+        })
+
+        p.then(value => {
+            alert(value);
+        }, reason => {
+            alert(reason);
+        })
+
+        console.log(p);
+
+    </script>
+</body>
+
+</html>

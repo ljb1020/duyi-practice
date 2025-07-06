@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background: #e74c3c;
+            transition:
+                width 0.5s ease-in-out,
+                box-shadow 0.3s linear;
+        }
+
+        .box:hover {
+            width: 200px;
+            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .card {
+            width: 150px;
+            height: 200px;
+            background: skyblue;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .card:hover {
+            transform: translateX(20px) rotate(5deg);
+            /* 右移+旋转 */
+        }
+    </style>
+
+    <div class="box"></div>
+    <div class="card"></div>
+</body>
+
+</html>

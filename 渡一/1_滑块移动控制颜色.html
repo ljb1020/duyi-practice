@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ball {
+            --delay: 0s;
+            margin-top: 200px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: red;
+            animation: move 1s linear forwards paused;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes move {
+            50% {
+                transform: translateX(200px) scale(1.5);
+                background-color: skyblue;
+            }
+
+            100% {
+                transform: translateX(400px) scale(1);
+                background-color: red;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="ball"></div>
+        <input type="range" min="0" max="1" step="0.01">
+    </div>
+    <script>
+        // 利用动画延迟 实现复杂动画
+        const ball = document.querySelector('.ball');
+        const input = document.querySelector('input');
+        // input.addEventListener('input', (e) => {
+        //     console.log(input.value);
+        // })
+        function calc() {
+            ball.style.setProperty('--delay', -input.value + 's');
+        }
+        input.oninput = calc;
+        calc();
+    </script>
+</body>
+
+</html>

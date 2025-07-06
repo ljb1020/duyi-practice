@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    function ajaxA() {
+      return new Promise((resolve, reject) => {
+        setTimeout(function () {
+          console.log("ajaxA完成");
+          resolve('aaaaa');
+        }, 2000);
+      });
+    }
+
+    function ajaxB() {
+      return new Promise((resolve, reject) => {
+        setTimeout(function () {
+          console.log("ajaxB完成");
+          resolve('bbbbb');
+        },2000);
+      });
+    }
+
+    function ajaxC() {
+      return new Promise((resolve, reject) => {
+        setTimeout(function () {
+          console.log("ajaxC完成");
+          resolve('ccccc');
+        }, 2000);
+      });
+    }
+
+    // ajaxA().then(ajaxB).then(ajaxC);
+
+    async function test(){
+        let res1 =  await ajaxA();
+        let res2 =  await ajaxB();
+        let res3 =  await ajaxC();
+        console.log(res1);
+        console.log(res2);
+        console.log(res3);
+        
+    }
+    
+    test();
+
+  </script>
+</html>

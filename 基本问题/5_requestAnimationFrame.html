@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div
+        id="test"
+        style="width: 0px;height: 50px;line-height: 50px;background-color: skyblue;font-size: 40px;"
+    >
+        0%
+    </div>
+
+    <script>
+
+        // setInterval
+        // test.onclick = function(){
+        //     var timer = setInterval(()=>{
+        //         if(parseInt(test.style.width) < 2000){
+        //             test.style.width = parseInt(test.style.width) + 20 + "px";
+        //             test.innerHTML = parseInt(test.style.width)/20 + "%";
+        //         }else{
+        //             clearInterval(timer);
+        //         }
+        //     },17)
+        // }
+
+        //setTimeOut
+        // test.onclick = function(){
+        //     var timer = setTimeout(function fn() {
+        //         if(parseInt(test.style.width) < 2000){
+        //             test.style.width = parseInt(test.style.width) + 20 + "px";
+        //             test.innerHTML = parseInt(test.style.width)/20 + "%";
+        //             timer = setTimeout(fn,17);
+        //         }else{
+        //             clearTimeout(timer);
+        //         }
+        //     },17)
+        // }
+        // count = 0;
+        // requestAnimationFrame
+        test.onclick = function(){
+            var timer = requestAnimationFrame(function fn() {
+                if(parseInt(test.style.width) < 2000){
+                    test.style.width = parseInt(test.style.width) + 20 + "px";
+                    test.innerHTML = parseInt(test.style.width)/20 + "%";
+                    count++
+                    timer = requestAnimationFrame(fn);
+                }else{
+                    cancelAnimationFrame(timer);
+                    // console.log(count)
+                }
+            })
+        }
+        
+        
+    </script>
+</body>
+</html>

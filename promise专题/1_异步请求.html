@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .btn {
+        background-color: skyblue;
+        width: 100px;
+        height: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn" onclick="send()">发送请求</button>
+  </body>
+  <script>
+    function send() {
+        new Promise(ajaxA).then(ajaxB);
+    }
+
+    function ajaxA(resolve,reject) {
+    //   console.log(arguments);
+      console.log("ajaxA开始");
+      setTimeout(function () {
+        console.log("ajaxA完成");
+        resolve();
+      }, Math.round(Math.random() * 3000 + 2000));
+    }
+
+    function ajaxB(resolve,reject) {
+      console.log("ajaxB开始");
+      setTimeout(function () {
+        console.log("ajaxB完成");
+        // resolve();
+      }, Math.round(Math.random() * 3000 + 2000));
+    }
+
+  </script>
+</html>

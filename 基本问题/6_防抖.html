@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <input type="submit" id="input">
+
+    <script type="text/javascript">
+        var btn = document.getElementById('input');
+
+        btn.addEventListener('click', debounce(submit, 2000), false);
+
+        function submit(e) {
+            console.log(e);
+            console.log(this);
+
+        }
+
+        function debounce(fn, wait) {
+            let timeId = null;
+            return function () {
+                if (timeId) {
+                    clearTimeout(timeId);
+                }
+                timeId = setTimeout(() => {
+                    fn.apply(this, arguments);
+                }, wait);
+            }
+        }
+
+        // function debounce(fn, wait) {
+        //     let timeId = null;
+        //     return function () {
+        //         if (timeId) {
+        //             clearTimeout(timeId);
+        //         }
+        //         timeId = setTimeout(() => {
+        //             fn.apply(this, arguments);
+        //         }, wait)
+        //     }
+        // }
+
+
+        // function debounce(fn, wait) {
+        //     let timeId = null;
+        //     return function () {
+        //         if (timeId) {
+        //             clearTimeout(timeId);
+        //         }
+        //         timeId = setTimeout(() => {
+        //             fn.apply(this, arguments);
+        //         }, wait);
+        //     }
+        // }
+
+        // function debounce(fn,wait){
+        //     let timeId = null;
+        //     return function(){
+        //         if(timeId){
+        //            clearTimeout(timeId);
+        //         }
+        //         timeId = setTimeout(()=>{
+        //             fn.apply(this,arguments);
+        //         },wait);
+        //     }
+        // }
+
+
+
+
+
+        // function submit(e) {
+        //     // console.log(this);
+        //     console.log(1);
+        // }
+
+        // // 第一次点击直接调用
+        // function debounce(fn, time) {
+        //     let timeId = null;
+        //     return function () {
+        //         if (timeId) {
+        //             clearTimeout(timeId);
+        //         }
+
+        //         timeId = setTimeout(() => {
+        //             fn.apply(this, arguments);
+        //         }, time)
+
+        //     }
+        // }
+
+
+
+
+        // // 第一次点击直接调用
+        // function debounce(fn, time, triggleNow) {
+        //     let timeId = null;
+        //     return function () {
+        //         // console.log(arguments[0]);
+        //         // let arg = arguments[0];
+        //         if (timeId) {
+        //             clearTimeout(timeId);
+        //         }
+
+        //         if (triggleNow) {
+        //             var firstClick = !timeId;
+        //             if(firstClick) fn.apply(this, arguments);
+
+        //             timeId = setTimeout(()=>{
+        //                 timeId = null;
+        //             },time)
+
+        //         } else {
+        //             timeId = setTimeout(() => {
+        //                 fn.apply(this, arguments);
+        //             }, time)
+        //         }
+        //     }
+        // }
+
+        // function debounce(fn){
+        //     return function(){
+        //         setTimeout(function(){
+        //             fn();
+        //         },1000)
+        //     }
+        // }
+    </script>
+</body>
+
+</html>

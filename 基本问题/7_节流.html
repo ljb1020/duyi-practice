@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text">
+    <input type="submit" id="input">
+
+    <!-- <script type="text/javascript">
+        var btn = document.getElementById('input');
+
+        btn.addEventListener('click', throttle(submit, 2000), false);
+
+        function submit(e) {
+            console.log(this);
+            console.log(e);
+        }
+
+        function throttle(fn,delay) {
+            var begin = 0;
+            return function(){
+                var cur = new Date().getTime();
+                if(cur - begin > delay){
+                    fn.apply(this,arguments); 
+                    begin = cur;
+                }
+            }
+        }
+
+    </script> -->
+
+    <script>
+        let btn = document.getElementById("input");
+        btn.addEventListener('click', throttle(submit, 2000), false);
+
+        function submit(e) {
+            console.log(e);
+
+        }
+
+        function throttle(fn, wait) {
+            let begin = 0;
+            return function () {
+                let cur = new Date().getTime();
+                if (cur - begin > wait) {
+                    fn.apply(this, arguments);
+                    begin = cur;
+                }
+            }
+
+        }
+
+        // function throttle(fn, wait) {
+        //     let begin = 0;
+        //     return function () {
+        //         let cur = new Date().getTime();
+        //         if (cur - begin > wait) {
+        //             fn.apply(this, arguments);
+        //             begin = cur;
+        //         }
+        //     }
+        // }
+
+        // function throttle(fn, wait) {
+        //     let begin = 0;
+        //     return function () {
+        //         let cur = new Date().getTime();
+        //         if (cur - begin > wait) {
+        //             fn.apply(this, arguments);
+        //             begin = cur;
+        //         }
+        //     }
+        // }
+
+        // function throttle(fn,wait){
+        //     let begin = 0;
+        //     return function(){
+        //         let cur = new Date().getTime();
+        //         if(cur - begin > wait){
+        //             fn.apply(this,arguments);
+        //             begin = cur;
+        //         }
+        //     }
+        // }
+
+
+
+        // function submit(e){
+        //     console.log(e);
+        // }
+
+        // function throttle(fn,wait){
+        //     let begin = 0;
+        //     return function(){
+        //         let cur = new Date().getTime();
+        //         if(cur - begin > wait){
+        //             fn.apply(this,arguments);
+        //             begin = cur;
+        //         }
+        //     }
+        // }
+    </script>
+</body>
+
+</html>

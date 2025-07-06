@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <p>
+            asKLLJHASDKLJAKSLJJLKDS
+            ALKSDJDALKJDSAJ;LKDASJLK
+            LKAHSDDLKHDASLKJH
+        </p>
+        <div>
+            askldjadslkj
+        </div>
+    </div>
+    <script>
+        document.querySelector('p').addEventListener('copy', e => {
+            e.preventDefault();
+            // alert("想复制先打钱")
+            e.clipboardData.setData('text/plain', '不准复制，打钱！')
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const obj = {
+            arr: [1, 2, 3],
+            a: 4
+        }
+        obj.sub = obj;
+        obj.arr.push(obj);
+
+        function deepClone(value) {
+            const cache = new WeakMap();
+            function _deepClone(value) {
+                if (value === null || typeof value !== 'object') {
+                    return value;
+                }
+                if (cache.has(value)) {
+                    return cache.get(value);
+                }
+                const result = Array.isArray(value) ? [] : {};
+                cache.set(value, result);
+                for (let k in value) {
+                    if (value.hasOwnProperty(k)) {
+                        result[k] = _deepClone(value[k]);
+                    }
+                }
+                return result;
+            }
+            return _deepClone(value);
+        }
+
+        // function deepClone(value) {
+        //     const cache = new WeakMap();
+        //     function _deepClone(value) {
+        //         // 是不是基本数据类型
+        //         if (value === null || typeof value !== 'object') {
+        //             return value;
+        //         }
+        //         // 缓存有没有，有的话直接返回
+        //         if (cache.has(value)) {
+        //             return cache.get(value);
+        //         }
+        //         const result = Array.isArray(value) ? [] : {};
+        //         cache.set(value, result);
+        //         for (let key in value) {
+        //             if (value.hasOwnProperty(key)) {
+        //                 result[key] = _deepClone(value[key]);
+        //             }
+        //         }
+        //         return result;
+        //     }
+        //     return _deepClone(value);
+        // }
+        const newObj = deepClone(obj);
+        console.log(newObj.arr !== obj.arr);
+        console.log(newObj.sub !== obj.sub);
+        console.log(newObj.arr[3] !== obj);
+        console.log(newObj.arr[3] === newObj);
+
+
+    </script>
+</body>
+
+</html>

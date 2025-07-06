@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="father">
+        <div class="son">
+
+        </div>
+    </div>
+    <script>
+
+        const son = document.querySelector(".son");
+        const father1 = document.querySelector(".father");
+        const father = son.parentNode;
+        const father3 = son.closest("div")
+        console.log(father === father1);
+        console.log(father3);
+
+
+    </script>
+</body>
+
+</html>
